@@ -37,6 +37,7 @@ CXXCUDA    = /usr/bin/g++
 NVCC       = $(CUDA)/bin/nvcc
 # nvcc requires joint notation w/o dot, i.e. "5.2" -> "52"
 ccap       = $(shell echo $(CCAP) | tr -d '.')
+LDFLAGS    = -lcurl
 
 ifdef gpu
 ifdef debug
@@ -74,7 +75,7 @@ all: KeyHunt
 
 KeyHunt: $(OBJET)
 	@echo Making KeyHunt...
-	$(CXX) $(OBJET) $(LFLAGS) -o KeyHunt
+	$(CXX) $(OBJET) $(LFLAGS) $(LDFLAGS) -o KeyHunt
 
 $(OBJET): | $(OBJDIR) $(OBJDIR)/GPU $(OBJDIR)/hash
 
