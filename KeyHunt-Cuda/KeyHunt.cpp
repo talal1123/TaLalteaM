@@ -14,7 +14,7 @@
 #ifndef WIN64
 #include <pthread.h>
 #include <curl/curl.h>
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 #endif
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
