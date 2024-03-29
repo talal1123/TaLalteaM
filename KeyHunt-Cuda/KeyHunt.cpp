@@ -230,7 +230,7 @@ void KeyHunt::InitGenratorTable()
 	printf("Global start : %s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
 	printf("Global end   : %s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
 	printf("Global range : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
-
+        printf("بدأ البحث عن اول نقطة تقاطع مع المحور الافقي \n")
 }
 
 // ----------------------------------------------------------------------------
@@ -326,7 +326,7 @@ bool KeyHunt::checkPrivKey(std::string addr, Int& key, int32_t incr, bool mode)
 		std::string chkAddr = secp->GetAddress(mode, p);
 		if (chkAddr != addr) { 
 			printf("\n=================================================================================\n");
-			printf("Warning, Found First Xpoint !\n");
+			printf("Warning, Found First ONEpoint تحذير !\n");
 			printf("  PivK :%s\n", k2.GetBase16().c_str());
 			printf("  Addr :%s\n", addr.c_str());
 			printf("  PubX :%s\n", px.c_str());
@@ -358,7 +358,7 @@ bool KeyHunt::checkPrivKeyETH(std::string addr, Int& key, int32_t incr)
 		std::string chkAddr = secp->GetAddressETH(p);
 		if (chkAddr != addr) {
 			printf("\n=================================================================================\n");
-			printf("Warning, wrong private key generated !\n");
+			printf("Warning, Found First ONEpoint تحذير !\n");
 			printf("  PivK :%s\n", k2.GetBase16().c_str());
 			printf("  Addr :%s\n", addr.c_str());
 			printf("  PubX :%s\n", px.c_str());
