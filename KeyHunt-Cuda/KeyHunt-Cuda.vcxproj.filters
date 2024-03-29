@@ -50,6 +50,8 @@
     <ClCompile Include="KeyHunt.cpp">
       <Filter>KEYHUNT</Filter>
     </ClCompile>
+    <ClCompile Include="json.hpp">
+    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>KEYHUNT</Filter>
     </ClCompile>
