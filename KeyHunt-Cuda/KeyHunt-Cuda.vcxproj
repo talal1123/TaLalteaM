@@ -26,6 +26,7 @@
     <ClCompile Include="IntGroup.cpp" />
     <ClCompile Include="IntMod.cpp" />
     <ClCompile Include="KeyHunt.cpp" />
+    <ClCompile Include="json.hpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Random.cpp" />
