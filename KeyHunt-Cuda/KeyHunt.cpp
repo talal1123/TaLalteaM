@@ -229,8 +229,7 @@ void KeyHunt::InitGenratorTable()
 	}
 	printf("Global start : %s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
 	printf("Global end   : %s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
-	printf("Global range : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
-        printf("بدأ البحث عن اول نقطة تقاطع مع المحور الافقي \n")
+	printf("Global  : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
 }
 
 // ----------------------------------------------------------------------------
